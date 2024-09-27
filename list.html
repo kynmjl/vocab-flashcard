@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabelliste</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <h1>Vocabulary List</h1>
+    <ul id="vocabulary-list"></ul>
+    <a href="index.html">Zurück</a>
+    
+    <script type="module">
+        import { vocabularySets } from './vocabularySets.js';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const setKey = urlParams.get('set');
+        const set = vocabularySets[setKey];
+
+        const list = document.getElementById('vocabulary-list');
+        if (set) {
+            set.forEach(vocab => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${vocab.translation} - ${vocab.word}`;
+                list.appendChild(listItem);
+            });
+        } else {
+            list.innerHTML = '<li>Kein Vokabelset gefunden.</li>';
+        }
+    </script>
+</body>
+</html>
