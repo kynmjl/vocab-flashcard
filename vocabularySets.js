@@ -14,5 +14,5 @@ const vocabularySets = {
     ]
 };
 
-// Exportiere die Vokabelsets, falls du später mit Modulen arbeitest
-export default vocabularySets;
+// Exportiere die Vokabelsets
+export { vocabularySets };
