@@ -3,45 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>site 3</title>
-</head>
-<body>
-    <h1>Manage vocabulary</h1>
-    <a href="index.html">Zurück zum Menü</a>
-</body>
-</html>
-
-
-
-
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vokabeln verwalten</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="module"></script>
 </head>
 <body>
     <h1>Choose a list</h1>
     <div id="vocabulary-editor"></div>
     <a href="site3.html">Zurück</a>
-    <script>
+    <script type="module">
+        import { vocabularySets } from './vocabularySets.js';
+
         const urlParams = new URLSearchParams(window.location.search);
         const setKey = urlParams.get('set');
         const set = vocabularySets[setKey];
 
         const editor = document.getElementById('vocabulary-editor');
-        set.forEach((vocab, index) => {
-            const editItem = document.createElement('div');
-            editItem.contentEditable = true;
-            editItem.textContent = `${vocab.translation}_${vocab.word}`;
-            editItem.addEventListener('input', () => {
-                const [translation, word] = editItem.textContent.split('_');
-                set[index] = { translation, word };
+        if (set) {
+            set.forEach((vocab, index) => {
+                const editItem = document.createElement('div');
+                editItem.contentEditable = true;
+                editItem.textContent = `${vocab.translation}_${vocab.word}`;
+                editItem.addEventListener('input', () => {
+                    const [translation, word] = editItem.textContent.split('_');
+                    set[index] = { translation, word };
+                });
+                editor.appendChild(editItem);
             });
-            editor.appendChild(editItem);
-        });
+        } else {
+            editor.innerHTML = '<p>Kein Vokabelset gefunden.</p>';
+        }
     </script>
 </body>
 </html>
