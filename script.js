@@ -33,8 +33,5 @@ function selectSet(setKey) {
 
 // Aufrufen beim Laden der Seite
 window.onload = function() {
-    const page = window.location.pathname.split('/').pop();
-    if (page === 'site1.html' || page === 'site2.html' || page === 'site3.html') {
-        showVocabularySets();
-    }
+    showVocabularySets();
 };
