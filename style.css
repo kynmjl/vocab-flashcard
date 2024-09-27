@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.menu-item {
+    background-color: #3498db;
+    padding: 40px;
+    width: 200px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #2980b9;
+}
+
+.menu-item h2 {
+    margin: 0;
+}
