@@ -1,5 +1,5 @@
-// Wenn du ES6 Module verwendest
-import { vocabularySets } from './vocabularySets.js'; // Stelle sicher, dass der Pfad korrekt ist
+// script.js
+import { vocabularySets } from './vocabularySets.js';
 
 function navigateTo(page) { 
     window.location.href = page;
@@ -19,7 +19,7 @@ function showVocabularySets() {
     });
 }
 
-// Funktion, um auf ein Set zuzugreifen (unterschiedlich pro Seite)
+// Funktion, um auf ein Set zuzugreifen
 function selectSet(setKey) {
     const page = window.location.pathname.split('/').pop();
     if (page === 'site1.html') {
@@ -33,5 +33,8 @@ function selectSet(setKey) {
 
 // Aufrufen beim Laden der Seite
 window.onload = function() {
-    showVocabularySets();
+    const page = window.location.pathname.split('/').pop();
+    if (page === 'site1.html' || page === 'site2.html' || page === 'site3.html') {
+        showVocabularySets();
+    }
 };
