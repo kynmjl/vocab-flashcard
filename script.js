@@ -1,25 +1,9 @@
-function navigateTo(page) {
+// Wenn du ES6 Module verwendest
+import { vocabularySets } from './vocabularySets.js'; // Stelle sicher, dass der Pfad korrekt ist
+
+function navigateTo(page) { 
     window.location.href = page;
 }
-
-
-
-
-// Beispielhafte Datenstruktur für Vokabelsets
-const vocabularySets = {
-    set1: [
-        { translation: "House", word: "Haus" },
-        { translation: "Dog", word: "Hund" },
-    ],
-    set2: [
-        { translation: "Car", word: "Auto" },
-        { translation: "Tree", word: "Baum" },
-    ],
-    set3: [
-        { translation: "Book", word: "Buch" },
-        { translation: "Chair", word: "Stuhl" },
-    ]
-};
 
 // Funktion zum Anzeigen der Vokabelsets
 function showVocabularySets() {
