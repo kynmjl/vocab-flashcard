@@ -1,5 +1,5 @@
 // vocabularySets.js
-const vocabularySets = {
+export const vocabularySets = {
     set1: [
         { translation: "House", word: "Haus" },
         { translation: "Dog", word: "Hund" },
@@ -13,6 +13,3 @@ const vocabularySets = {
         { translation: "Chair", word: "Stuhl" },
     ]
 };
-
-// Exportiere die Vokabelsets
-export { vocabularySets };
