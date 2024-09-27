@@ -10,3 +10,38 @@
     <a href="index.html">Zurück zum Menü</a>
 </body>
 </html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabeln verwalten</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Vokabeln verwalten</h1>
+    <div id="vocabulary-editor"></div>
+    <a href="site3.html">Zurück</a>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const setKey = urlParams.get('set');
+        const set = vocabularySets[setKey];
+
+        const editor = document.getElementById('vocabulary-editor');
+        set.forEach((vocab, index) => {
+            const editItem = document.createElement('div');
+            editItem.contentEditable = true;
+            editItem.textContent = `${vocab.translation}_${vocab.word}`;
+            editItem.addEventListener('input', () => {
+                const [translation, word] = editItem.textContent.split('_');
+                set[index] = { translation, word };
+            });
+            editor.appendChild(editItem);
+        });
+    </script>
+</body>
+</html>
