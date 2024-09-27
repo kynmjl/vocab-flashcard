@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karteikarten</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Füge die vocabularySets.js hier ein -->
-    <script src="vocabularySets.js"></script>
-    <script src="script.js" type="module"></script> <!-- Verwende type="module" -->
+    <!-- Füge die Module hier ein -->
+    <script src="vocabularySets.js" type="module"></script>
+    <script src="script.js" type="module"></script>
 </head>
 <body>
     <h1>Karteikarten</h1>
@@ -15,16 +15,15 @@
     <a href="site1.html">Zurück</a>
 
     <script type="module">
-        // Importiere die Vokabelsets, falls du sie im module format hast
         import { vocabularySets } from './vocabularySets.js';
 
         const urlParams = new URLSearchParams(window.location.search);
         const setKey = urlParams.get('set');
-        const set = vocabularySets[setKey]; // Jetzt greift es auf die importierte Struktur zu
+        const set = vocabularySets[setKey];
 
         const container = document.getElementById('flashcards-container');
         
-        if (set) { // Überprüfe, ob das Set existiert
+        if (set) {
             set.forEach(vocab => {
                 const card = document.createElement('div');
                 card.className = 'flashcard';
@@ -32,10 +31,9 @@
                 container.appendChild(card);
             });
         } else {
-            container.innerHTML = '<p>Kein Vokabelset gefunden.</p>'; // Hinweis, wenn das Set nicht existiert
+            container.innerHTML = '<p>Kein Vokabelset gefunden.</p>';
         }
 
-        // Funktion zum Drehen der Karte
         document.querySelectorAll('.flashcard').forEach(card => {
             card.addEventListener('click', () => {
                 card.classList.toggle('flipped');
