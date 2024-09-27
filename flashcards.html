@@ -5,23 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karteikarten</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Füge die vocabularySets.js hier ein -->
+    <script src="vocabularySets.js"></script>
+    <script src="script.js" type="module"></script> <!-- Verwende type="module" -->
 </head>
 <body>
     <h1>Karteikarten</h1>
     <div id="flashcards-container"></div>
     <a href="site1.html">Zurück</a>
-    <script>
+
+    <script type="module">
+        // Importiere die Vokabelsets, falls du sie im module format hast
+        import { vocabularySets } from './vocabularySets.js';
+
         const urlParams = new URLSearchParams(window.location.search);
         const setKey = urlParams.get('set');
-        const set = vocabularySets[setKey];
+        const set = vocabularySets[setKey]; // Jetzt greift es auf die importierte Struktur zu
 
         const container = document.getElementById('flashcards-container');
-        set.forEach(vocab => {
-            const card = document.createElement('div');
-            card.className = 'flashcard';
-            card.innerHTML = `<div class="front">${vocab.translation}</div><div class="back">${vocab.word}</div>`;
-            container.appendChild(card);
-        });
+        
+        if (set) { // Überprüfe, ob das Set existiert
+            set.forEach(vocab => {
+                const card = document.createElement('div');
+                card.className = 'flashcard';
+                card.innerHTML = `<div class="front">${vocab.translation}</div><div class="back">${vocab.word}</div>`;
+                container.appendChild(card);
+            });
+        } else {
+            container.innerHTML = '<p>Kein Vokabelset gefunden.</p>'; // Hinweis, wenn das Set nicht existiert
+        }
 
         // Funktion zum Drehen der Karte
         document.querySelectorAll('.flashcard').forEach(card => {
